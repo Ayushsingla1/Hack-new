@@ -3,35 +3,16 @@ import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { ConnectKitButton } from 'connectkit';
-import { useReadContract } from 'wagmi';
-import { ABI, ContractAddress } from '../utils/ContractInfo';
 import "../components/loader.css"
 import LazySection from '../components/LazySection';
+
 const HackathonHomepage = () => {
 
   const navigate = useNavigate();
 
   const { scrollYProgress } = useScroll();
   const backgroundOpacity = useTransform(scrollYProgress, [0, 0.2], [0.1, 0]);
-  
 
-  const {data , isSuccess , isPending , isError} = useReadContract({
-    abi : ABI,
-    address : ContractAddress,
-    functionName : 'getAllHackathons'
-  })
-
-  if(isPending) {
-    return <div className='w-screen h-screen flex items-center justify-center bg-gray-900'>
-      <span className='loader'></span>
-    </div>
-  }
-  if(isError){
-    return <div className='w-screen h-screen flex items-center justify-center bg-gray-900 text-white'>
-      Unable to Fetch at the moment
-    </div>
-  }
-  if(!isPending && isSuccess){
     return (
       <div className="min-h-screen bg-gray-900 text-white">
         <motion.div 
@@ -199,7 +180,7 @@ const HackathonHomepage = () => {
                       backgroundColor: 'rgba(139, 92, 246, 0.1)'
                     }}
                     whileTap={{ scale: 0.95 }}
-                    href='https://edu-chain-testnet.blockscout.com/address/0x4392042c2Ca07eb75e605f5786321aF1fA656555'
+                    href='https://edu-chain-testnet.blockscout.com/address/0x8d140c3fD51781f5F6015f55a5B50a93855Ff9E4'
                     target='_blank'
                   >
                     View Smart Contract
@@ -215,7 +196,7 @@ const HackathonHomepage = () => {
                       <div className="text-xs bg-green-900/40 text-green-400 px-2 py-1 rounded">Active</div>
                     </div>
                     <div className="font-mono text-xs text-gray-400 break-all">
-                    0x4392042c2Ca07eb75e605f5786321aF1fA656555
+                    0x8d140c3fD51781f5F6015f55a5B50a93855Ff9E4
                     </div>
                   </div>
                   
@@ -441,7 +422,6 @@ const HackathonHomepage = () => {
         </LazySection>
       </div>
     );
-  }
 };
 
 export default HackathonHomepage;

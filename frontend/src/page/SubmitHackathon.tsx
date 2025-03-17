@@ -8,13 +8,9 @@ import Page3 from "../components/SubmissionPage3";
 import Page4 from "../components/SubmissionPage4";
 
 
-const HackathonSubmission = () => {
-
-
+const SubmitHackathon = () => {
     const [Page,setPage] = useState(1);
-
     return <div className="w-screen bg-gray-900 text-white min-h-screen">
-
         <Navbar/>
         {
             Page === 1 ? (<div className="text-center mt-10 text-3xl">
@@ -37,4 +33,4 @@ const HackathonSubmission = () => {
     </div>
 }
 
-export default HackathonSubmission;
+export default SubmitHackathon;

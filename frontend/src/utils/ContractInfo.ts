@@ -533,4 +533,4 @@ export const ABI =  [
     }
   ]
 
-export const ContractAddress = "0x4392042c2Ca07eb75e605f5786321aF1fA656555"
+export const ContractAddress = "0x8d140c3fD51781f5F6015f55a5B50a93855Ff9E4"

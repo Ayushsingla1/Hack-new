@@ -14,9 +14,6 @@ const config = createConfig(
     walletConnectProjectId: '2',
 
     appName: "Edu-Hacks",
-    appDescription: "Your App Description",
-    appUrl: "https://family.co", 
-    appIcon: "https://family.co/logo.png",
   }),
 );
 

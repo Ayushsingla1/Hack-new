@@ -34,7 +34,7 @@ const Page2 = ({setPage} : {setPage : any}) => {
         </div>
         <div className="flex justify-between">
             <div className="flex flex-col items-start gap-y-0.5 w-[48%]">
-                <label htmlFor="category">category</label>
+                <label htmlFor="category">Category</label>
                 <input className="p-3 w-full bg-white/70 rounded-sm text-black" type="text" placeholder="Enter Your Project Category" value={data.category} id = "category" name="category" onChange={(e) =>changeHandler(e)}/>
             </div>
             <div className="flex flex-col items-start gap-y-0.5 w-[48%]">

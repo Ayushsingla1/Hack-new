@@ -2,7 +2,6 @@ import { atom } from "jotai";
 
 export const submissionForm = atom({
         firstName: "",
-        lastName: "",
         introduction: "",
         country: "",
         state: "",
@@ -13,7 +12,10 @@ export const submissionForm = atom({
         projectShortDesc: "",
         projectMainDesc: "",
         images: [],
-        category: []
+        category: "",
+        email : "",
+        liveLink : "",
+        imageShow : []
 });
 
 

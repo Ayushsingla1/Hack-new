@@ -1,12 +1,16 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import HackathonLower from "../components/HackathonLower";
 import HackathonUpper from "../components/HackathonUpper";
-import HackathonEndedLower from "../components/HackathonEndedLower";
-import { useParams } from "react-router-dom";
-import { ABI, ContractAddress } from "../utils/ContractInfo";
 import { useReadContract } from "wagmi";
+import { ABI, ContractAddress } from "../utils/ContractInfo";
+import { useParams } from "react-router-dom";
+import "../components/loader.css"
+import ChatBot from "../components/Chatbot";
+import HackathonChatbot from "../components/Chatbot";
 
-const HackathonEnded = () => {
+const IndividualHackathon = () => {
+
 
     const {hackathonId : id} = useParams();
 
@@ -17,7 +21,7 @@ const HackathonEnded = () => {
         address : ContractAddress,
         functionName : "getHackathon",
         //@ts-ignore
-        args : [parseInt(id)-1]
+        args : [parseInt(id)]
     })
 
     console.log(data);
@@ -34,12 +38,15 @@ const HackathonEnded = () => {
         </div>
     }
 
-    return <div className="w-screen bg-gray-900 text-white min-h-screen">    
-        <Navbar/>
-        <HackathonUpper data = {data}/>
-        <HackathonEndedLower/>
-        <Footer/>
-    </div>
+    if(!isPending && isSuccess){
+        return <div className="w-screen bg-gray-900 text-white min-h-screen">    
+                <Navbar/>
+                <HackathonUpper data = {data}/>
+                <HackathonLower data = {data}/>
+                <HackathonChatbot/>
+                <Footer/>
+            </div>
+    }
 }
 
-export default HackathonEnded;
+export default IndividualHackathon;

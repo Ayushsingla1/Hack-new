@@ -1,7 +1,9 @@
 import {motion} from "motion/react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const HackathonLower = () => {
+const HackathonLower = ({data} : {data : any}) => {
+
+    const {hackathonId} = useParams();
 
     const navigate = useNavigate();
     return (
@@ -12,7 +14,7 @@ const HackathonLower = () => {
                     <div className="bg-gradient-to-r from-purple-500 to-blue-500 w-full h-0.5"></div>
                 </div>
                 <div className="flex justify-center w-5/12">
-                    <motion.button className="px-3 py-3 bg-gradient-to-l from-purple-500 to-blue-500 rounded-md w-48 hover:cursor-pointer" whileHover={{scale : 1.1}} whileTap={{scale : 0.95}} onClick={() => navigate('/hackathon/submission/1')}>APPLY NOW</motion.button>
+                    <motion.button className="px-3 py-3 bg-gradient-to-l from-purple-500 to-blue-500 rounded-md w-48 hover:cursor-pointer" whileHover={{scale : 1.1}} whileTap={{scale : 0.95}} onClick={() => navigate(`/hackathon/submit/${hackathonId}`)}>APPLY NOW</motion.button>
                 </div>
             </div>
 
@@ -20,7 +22,10 @@ const HackathonLower = () => {
             <div className="flex flex-col w-7/12 p-0 gap-y-4 mt-4">
                     <div>🚀 Build, Experiment, and Win!</div>
                     <div className="text-justify">
-                    This is your chance to showcase your skills, push the boundaries of Web3, and earn a share of $5,000 in prizes! Whether you're starting fresh, improving an existing project, or reviving an old idea, all that matters is that you're building with MetaMask SDK and making progress this month.
+                        {data.hackathonDescription}
+                    </div>
+                    <div>
+                        {data.additionalDetails}
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import {motion} from "motion/react"
 import { useNavigate } from "react-router-dom"
 
-const HackathonCard = ({item} : {item : any}) => {
+const HackathonCard = ({item , index} : {item : any , index : number}) => {
 
     const navigate = useNavigate();
     return <motion.div className="bg-[#1E2938] flex flex-col gap-y-6 rounded-md text-white py-4 px-6 w-9/12" whileHover={{ 
@@ -12,7 +12,7 @@ const HackathonCard = ({item} : {item : any}) => {
       transition={{ duration: 0.3 }}>
         <div className="flex justify-between">
             <div className="flex flex-col gap-y-1">
-                <div className="text-lg">{item.name}</div>
+                <div className="text-lg">{item.hackathonName}</div>
                 <div className="self-end text-sm">Hackathon</div>
             </div>
             <div className="flex gap-x-2">
@@ -32,17 +32,17 @@ const HackathonCard = ({item} : {item : any}) => {
             </div>
             <div className="flex justify-between items-center">
                 <div className="flex gap-x-2 rounded-md">
-                        {item.themes.map((ele : any,index : number) => {
+                        {item.hackathonTheme.map((ele : any,index : number) => {
                             return <div className="bg-[#706C6C]/65 px-2 py-1.5 rounded-sm" key={index}>{ele}</div>
                         })}
                 </div>
-                <div>{item.ends}</div>
+                <div>{item.hackathonEnds}</div>
             </div>
         </div>
 
         <div className="flex justify-between items-center">
-            <div>{item.participating}+ participating</div>
-            <motion.button className="bg-gradient-to-l from-purple-500 to-blue-500 p-1 w-40 rounded-md font-semibold text-lg hover:cursor-pointer" whileHover={{scale : 1.05}} whileTap={{scale : .95}} onClick={() => navigate('/hackathon/info/1')}>Apply Now</motion.button>
+            <div>{100}+ participating</div>
+            <motion.button className="bg-gradient-to-l from-purple-500 to-blue-500 p-1 w-40 rounded-md font-semibold text-lg hover:cursor-pointer" whileHover={{scale : 1.05}} whileTap={{scale : .95}} onClick={() => navigate(`/hackathon/info/${index}`)}>Apply Now</motion.button>
         </div>
     </motion.div>
 }

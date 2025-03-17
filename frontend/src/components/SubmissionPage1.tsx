@@ -22,12 +22,12 @@ const Page1 = ({setPage} : {setPage : any}) => {
         <div className="flex flex-col gap-y-6">
         <div className="flex justify-between flex-wrap gap-y-2">
             <div className="flex flex-col items-start gap-y-0.5 xl:min-w-[48%] lg:min-w-full md:min-w-full">
-                <label htmlFor="firstName">FirstName</label>
+                <label htmlFor="firstName">Name</label>
                 <input className="p-3 bg-white/70 rounded-sm text-black w-full" type="text" placeholder="Enter Your First Name Ex. John" value={data.firstName} id = "firstName" name="firstName" onChange={(e) =>changeHandler(e)}/>
             </div>
             <div className="flex flex-col items-start gap-y-0.5 xl:min-w-[48%] lg:min-w-full md:min-w-full">
-                <label htmlFor="lastName">LastName</label>
-                <input className="p-3 bg-white/70 rounded-sm text-black w-full" type="text" placeholder="Enter Your Last Name Ex. Doe" value={data.lastName} id = "lastName" name="lastName" onChange={(e) =>changeHandler(e)}/>
+                <label htmlFor="email">Email</label>
+                <input className="p-3 bg-white/70 rounded-sm text-black w-full" type="text" placeholder="Enter Your Email Ex. Doe@gmail.com" value={data.email} id = "email" name="email" onChange={(e) =>changeHandler(e)}/>
             </div>
         </div>
         <div className="flex justify-between items-center flex-wrap gap-y-2">
@@ -36,8 +36,8 @@ const Page1 = ({setPage} : {setPage : any}) => {
                 <input className="p-3 bg-white/70 rounded-sm text-black w-full" type="text" placeholder="Enter Your Country" value={data.country} id = "country" name="country" onChange={(e) =>changeHandler(e)}/>
             </div>
             <div className="flex flex-col items-start gap-y-0.5 xl:min-w-[48%] lg:min-w-full md:min-w-full">
-                <label htmlFor="state">State</label>
-                <input className="p-3 bg-white/70 rounded-sm text-black w-full" type="text" placeholder="Enter Your State" value={data.state} id = "state" name="state" onChange={(e) =>changeHandler(e)}/>
+                <label htmlFor="liveLink">liveLink</label>
+                <input className="p-3 bg-white/70 rounded-sm text-black w-full" type="text" placeholder="Enter Your Project Live Link" value={data.liveLink} id = "liveLink" name="liveLink" onChange={(e) =>changeHandler(e)}/>
             </div>
         </div>
         <div className="flex flex-col items-start gap-y-0.5 w-full">

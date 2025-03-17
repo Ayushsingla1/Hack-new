@@ -10,12 +10,18 @@ const Page3 = ({ setPage }: { setPage: any }) => {
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        const newImages = [...data.images];
+        const newImages = [...data.imageShow];
+        const newImages2 = [...data.images];
+        // console.log(e.target);
+        //@ts-ignore
+        newImages[index] = event.target?.result;
 
         //@ts-ignore
-        newImages[index] = event.target?.result as string;
+        newImages2[index] = e.target.files[0];
+
+        console.log(newImages[index]);
         //@ts-ignore
-        setData(prev => {return {...prev,images : newImages}});
+        setData(prev => {return {...prev,imageShow : newImages,images : newImages2}});
       };
       reader.readAsDataURL(e.target.files[0]);
     }
@@ -81,7 +87,7 @@ const Page3 = ({ setPage }: { setPage: any }) => {
               onDragLeave={handleDragLeave}
               onDragEnd={handleDragLeave}
             >
-              {data.images[index] ? (
+              {data.imageShow[index] ? (
                 <motion.div 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -89,7 +95,7 @@ const Page3 = ({ setPage }: { setPage: any }) => {
                   className="relative w-full h-full group"
                 >
                   <img
-                    src={data.images[index]}
+                    src={data.imageShow[index]}
                     alt={`Uploaded image ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
@@ -110,10 +116,12 @@ const Page3 = ({ setPage }: { setPage: any }) => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => {
-                        const newImages = [...data.images];
+                        const newImages = [...data.imageShow];
                         //@ts-ignore
                         newImages[index] = "";
-                        setData(prev => {return {...prev,images:newImages}});
+                        const newImages2 = [...data.images]
+                  
+                        setData(prev => {return {...prev,imageShow:newImages,images : newImages2}});
                       }}
                       className="mt-2 px-3 py-1 bg-red-500/80 hover:bg-red-600 rounded-lg text-white text-xs"
                     >
