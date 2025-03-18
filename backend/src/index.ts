@@ -24,22 +24,17 @@ const wallet = new ethers.Wallet(PRIVATE_KEY || "", provider);
 app.post('/api/transfer', async (req, res) => {
   try {
     const { to } = req.body;
-    
-    // Validate recipient address
     if (!to || !ethers.isAddress(to)) {
       return res.status(400).json({ error: 'Invalid recipient address' });
     }
     
-    // Fixed amount: 0.1 ETH
     const value = ethers.parseEther('0.1');
     
-    // Create and send transaction
     const tx = await wallet.sendTransaction({
       to,
       value
     });
     
-    // Return transaction details
     res.json({
       message: 'Successfully sent 0.1 ETH',
       transactionHash: tx.hash,
