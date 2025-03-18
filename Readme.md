@@ -46,7 +46,7 @@ EduChain Hackathon Platform is a **cutting-edge decentralized application (dApp)
 ![Submission Dashboard](https://drive.google.com/uc?export=view&id=1Zs1aDCEt36sElt4fgbix8mZ6bflhW6wq)  
 
 👉 **AI Chatbot in Action** - Ask queries, brainstorm ideas, and claim Edu token faucets.  
-![Chatbot](https://drive.google.com/uc?export=view&id=1nfNWzDMTWwPBDK8PWw3W1EI0bP03N7d3)  
+![Chatbot](https://drive.google.com/uc?export=view&id=1YPcIe93LouRAxjPFZtj-UliYy8gUdeZ8)  
 
 ## Roadmap 🛣️
 - ✅ **On-Chain Hackathon Listings & Prize Locking**
