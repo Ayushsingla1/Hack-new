@@ -34,12 +34,14 @@ const HackathonEnded = () => {
         </div>
     }
 
-    return <div className="w-screen bg-gray-900 text-white min-h-screen">    
+    if(!isPending && isSuccess){
+        return <div className="w-screen bg-gray-900 text-white min-h-screen">    
         <Navbar/>
         <HackathonUpper data = {data}/>
         <HackathonEndedLower/>
         <Footer/>
     </div>
+    }
 }
 
 export default HackathonEnded;

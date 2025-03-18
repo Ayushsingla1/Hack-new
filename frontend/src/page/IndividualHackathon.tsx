@@ -6,7 +6,6 @@ import { useReadContract } from "wagmi";
 import { ABI, ContractAddress } from "../utils/ContractInfo";
 import { useParams } from "react-router-dom";
 import "../components/loader.css"
-import ChatBot from "../components/Chatbot";
 import HackathonChatbot from "../components/Chatbot";
 
 const IndividualHackathon = () => {

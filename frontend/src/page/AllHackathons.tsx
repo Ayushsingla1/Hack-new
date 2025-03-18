@@ -1,4 +1,3 @@
-import { hackathonData } from "../assets/data"
 import Footer from "../components/Footer"
 import HackathonCard from "../components/HackathonCard"
 import ListingSlider from "../components/ListingSlider"

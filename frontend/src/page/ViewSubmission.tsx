@@ -8,20 +8,19 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 
-// type Submission = {
-//     category : string[],
-//     name : string,
-//     projectName : string,
-//     projectImages : string[],
-//     projectShortDescription : string,
-//     projectDescription : string,
-//     introduction : string,
-//     userEmail : string,
-//     projectGithub : string,
-//     demoVideo : string,
-//     projectLink : string
-// }
-
+type selectedSubmission = {
+  name : String , 
+  projectName : String,
+  projectShortDescription : String
+  projectDescription : String,
+  projectImages : String[] , 
+  introduction : String , 
+  userEmail : String,
+  projectGithub : String,
+  demoVideo : String,
+  projectLink : String,
+  projectState : "Complete"
+}
 const HackathonSubmissionsPage = () => {
 
 
@@ -58,7 +57,7 @@ const HackathonSubmissionsPage = () => {
     console.log(submissions)
 
   
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<null | selectedSubmission>(null);
   const [filterCategory, setFilterCategory] = useState("");
   const navigate = useNavigate();
   
@@ -122,11 +121,13 @@ const HackathonSubmissionsPage = () => {
                 </button>
                 {categories.map(category => (
                   <button 
+                  //@ts-ignore
                     key={category}
                     className={`px-4 py-2 ${filterCategory === category ? 'bg-blue-600' : 'bg-gray-700'}`}
+                    //@ts-ignore
                     onClick={() => setFilterCategory(category)}
                   >
-                    {category}
+                    {category as string}
                   </button>
                 ))}
               </div>
@@ -189,6 +190,7 @@ const HackathonSubmissionsPage = () => {
                 className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
+                //@ts-ignore
                 onClick={() => setSelectedProject(null)}
               >
                 <motion.div 
@@ -200,6 +202,7 @@ const HackathonSubmissionsPage = () => {
                   <div className="relative">
                     <button 
                       className="absolute top-4 right-4 bg-gray-700 rounded-full p-2 hover:bg-gray-600"
+                      //@ts-ignore
                       onClick={() => setSelectedProject(null)}
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -207,10 +210,13 @@ const HackathonSubmissionsPage = () => {
                       </svg>
                     </button>
                     
-                    {(selectedProject as any[]).length > 0 && (
+                    {(selectedProject.projectImages as any[]).length > 0 && (
                       <div className="h-64 bg-gray-700">
                         <img 
+
+                          //@ts-ignore
                           src={selectedProject.projectImages[0]} 
+                          //@ts-ignore
                           alt={selectedProject.projectName}
                           className="w-full h-full object-cover"
                         />
@@ -245,15 +251,15 @@ const HackathonSubmissionsPage = () => {
                           <div className="space-y-2">
                             <div className="flex items-center">
                               <span className="text-gray-400 mr-2">GitHub:</span>
-                              <a href={selectedProject.projectGithub} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{selectedProject.projectGithub}</a>
+                              <a href={(selectedProject.projectGithub).toString()} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{selectedProject.projectGithub}</a>
                             </div>
                             <div className="flex items-center">
                               <span className="text-gray-400 mr-2">Demo:</span>
-                              <a href={selectedProject.demoVideo} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{selectedProject.demoVideo}</a>
+                              <a href={(selectedProject.demoVideo).toString()} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{selectedProject.demoVideo}</a>
                             </div>
                             <div className="flex items-center">
                               <span className="text-gray-400 mr-2">Live:</span>
-                              <a href={selectedProject.projectLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{selectedProject.projectLink}</a>
+                              <a href={(selectedProject.projectLink).toString()} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{selectedProject.projectLink}</a>
                             </div>
                           </div>
                         </div>

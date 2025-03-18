@@ -16,7 +16,7 @@ const Page4 = ({ setPage }: { setPage: (value: React.SetStateAction<number>) => 
   console.log(id)
 
   console.log(form)
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading,] = useState(false);
 
   const navigate = useNavigate();
 

@@ -1,5 +1,4 @@
 import Slider from "react-slick";
-import { hackathonData } from "../assets/data";
 import { motion } from "motion/react"
 import "./style.css"
 const ListingSlider = ({data} : {data : any}) => {
