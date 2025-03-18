@@ -6,6 +6,7 @@ import CreateHackathon from './page/HackathonCreation'
 import HackathonSubmissionsPage from './page/ViewSubmission'
 import AllHackathons from './page/AllHackathons'
 import IndividualHackathon from './page/IndividualHackathon'
+import WinnerPage from './page/WinnersPage'
 function App() {
   return (
     
@@ -16,6 +17,7 @@ function App() {
       <Route path='/hackathon/info/:hackathonId' element = {<IndividualHackathon/>}/>
       <Route path='/hackathon/submit/:hackathonId' element = {<HackathonSubmission/>}/>
       <Route path='/hackathon/submissions/:hackathonId' element = {<HackathonSubmissionsPage/>} />
+      <Route path='/hackathon/winners/:hackathonId' element = {<WinnerPage/>}/>
     </Routes>
   )
 }
