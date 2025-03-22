@@ -58,7 +58,7 @@ const HackathonChatbot = () => {
         if(query.includes('faucet')){
             console.log(true)
             try{
-                const res = await axios.post('http://localhost:3001/api/transfer',{
+                const res = await axios.post('https://hack-new.onrender.com/api/transfer',{
                     to : address
                 })
 
