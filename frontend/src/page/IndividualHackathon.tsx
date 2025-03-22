@@ -42,7 +42,9 @@ const IndividualHackathon = () => {
                 <Navbar/>
                 <HackathonUpper data = {data}/>
                 <HackathonLower data = {data}/>
-                <HackathonChatbot/>
+                <HackathonChatbot hackathonDescription =
+                //@ts-ignore 
+                {data.hackathonDescription}/>
                 <Footer/>
             </div>
     }

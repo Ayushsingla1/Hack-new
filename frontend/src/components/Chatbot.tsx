@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import axios from 'axios';
 import { useAccount } from 'wagmi';
 
-const HackathonChatbot = () => {
+const HackathonChatbot = ({hackathonDescription} : {hackathonDescription : string}) => {
   const [isOpen, setIsOpen] = useState(false);
   const {address} = useAccount();
 
@@ -75,7 +75,7 @@ const HackathonChatbot = () => {
         else{
             const prompt = `
                 You are an AI assistant helping participants in a hackathon and blockchain.
-                Only provide information about hackathon-related topics such as rules, tracks, prizes, deadlines, and project ideas. 
+                The description of the particular hackathon is ${hackathonDescription}. Help user with questions related to the hackathon description and other details on tech stacks but dont provide any code.
                 If a question is not related to the hackathon, respond with "⚠️ I can only assist with hackathon-related queries."
                 User query: ${query}
             `;
