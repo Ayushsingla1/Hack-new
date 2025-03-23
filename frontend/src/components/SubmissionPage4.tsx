@@ -15,6 +15,8 @@ const Page4 = ({ setPage }: { setPage: (value: React.SetStateAction<number>) => 
   const {hackathonId : id} = useParams();
   console.log(id)
 
+   console.log(form)
+
   console.log(form)
   const [isLoading,] = useState(false);
 
@@ -48,22 +50,22 @@ const Page4 = ({ setPage }: { setPage: (value: React.SetStateAction<number>) => 
   const {isSuccess , isPending ,isError} = useWaitForTransactionReceipt({hash});
   const [loading,setLoading] = useState(false);
 
-  // Helper function to render form values based on field type
   const renderValue = (key: string, value: any) => {
-    // Handle array fields
     if (Array.isArray(value)) {
       if (key === "images") {
         return (
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-2">
             {value.length > 0 ? (
               value.map((img, i) => (
-                <div key={i} className="relative rounded-md overflow-hidden h-24">
+                img === undefined ? (<div></div>) : (
+                  <div key={i} className="relative rounded-md overflow-hidden h-24">
                   <img
                     src={typeof img === "string" ? img : URL.createObjectURL(img)}
                     alt={`Project image ${i + 1}`}
                     className="w-full h-full object-cover"
                   />
                 </div>
+                )
               ))
             ) : (
               <p className="text-gray-400 italic">No images uploaded</p>
@@ -74,11 +76,9 @@ const Page4 = ({ setPage }: { setPage: (value: React.SetStateAction<number>) => 
       return value.length > 0 ? value.join(", ") : "None specified";
     }
 
-    // Handle text fields
     if (typeof value === "string") {
       if (value.trim() === "") return <span className="text-gray-400 italic">Not provided</span>;
-      
-      // Special handling for longer text fields
+
       if (key === "introduction" || key === "projectMainDesc") {
         return (
           <div className="mt-1 text-gray-200 max-h-40 overflow-y-auto pr-2 text-sm">

@@ -1,6 +1,25 @@
 import { atom } from "jotai";
 
-export const submissionForm = atom({
+interface SubmissionFormType {
+        firstName : string,
+        introduction : string,
+        country : string,
+        state : string,
+        projectName : string,
+        projectGithub : string,
+        projectState : string,
+        projectDemoLink: string,
+        projectShortDesc: string,
+        projectMainDesc: string,
+        images: File[],
+        category: string,
+        email : string,
+        liveLink : string,
+        imageShow : string[]
+
+}
+
+export const submissionForm = atom<SubmissionFormType>({
         firstName: "",
         introduction: "",
         country: "",

@@ -3,7 +3,6 @@ import {motion} from "motion/react"
 
 const HackathonUpper = ({data} : {data : any}) => {
 
-    console.log(data);
     return (
         <div className="flex justify-center gap-x-10 px-10 mt-20">
             <div className="w-7/12 p-0">

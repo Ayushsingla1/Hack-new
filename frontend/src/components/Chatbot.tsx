@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import axios from 'axios';
 import { useAccount } from 'wagmi';
 
-const HackathonChatbot = ({hackathonDescription} : {hackathonDescription : string}) => {
+const HackathonChatbot = ({hackathonDescription} : {hackathonDescription : string | undefined}) => {
   const [isOpen, setIsOpen] = useState(false);
   const {address} = useAccount();
 
@@ -52,7 +52,6 @@ const HackathonChatbot = ({hackathonDescription} : {hackathonDescription : strin
     ]);
   };
 
-  // Function to generate responses strictly limited to hackathon information
   const generateBotResponse = async(query : any) => {
     try {
         if(query.includes('faucet')){
@@ -63,8 +62,6 @@ const HackathonChatbot = ({hackathonDescription} : {hackathonDescription : strin
                 })
 
                 console.log(res);
-
-                //@ts-ignore
                 return (`Successfully airdroped 0.1 Edu , Transaction hash : ${res.data.transactionHash}`)
             }
             catch(e) {
@@ -162,7 +159,7 @@ const HackathonChatbot = ({hackathonDescription} : {hackathonDescription : strin
         </div>
       )}
       
-      {/* Chat Button */}
+
       <button 
         onClick={toggleChatbot}
         className={`bg-purple-600 hover:bg-purple-700 text-white rounded-full p-3 shadow-lg flex items-center justify-center focus:outline-none transition-all ${isOpen ? 'rotate-90' : ''}`}

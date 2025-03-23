@@ -86,7 +86,6 @@ const CreateHackathon = () => {
         //@ts-ignore
         Data.append('file', formData.posterImage);
         const pinataOptions = JSON.stringify({ cidVersion: 1 });
-        // const blob = new Blob([pinataOptions], { type: 'application/json' });
         Data.append('pinataOptions', pinataOptions);
 
         const response = await axios.post(

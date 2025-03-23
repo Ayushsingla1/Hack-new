@@ -213,9 +213,8 @@ const HackathonSubmissionsPage = () => {
                     {(selectedProject.projectImages as any[]).length > 0 && (
                       <div className="h-64 bg-gray-700">
                         <img 
-
                           //@ts-ignore
-                          src={selectedProject.projectImages[0]} 
+                          src={`https://gateway.pinata.cloud/ipfs/${selectedProject.projectImages[0]}`} 
                           //@ts-ignore
                           alt={selectedProject.projectName}
                           className="w-full h-full object-cover"

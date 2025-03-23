@@ -8,6 +8,21 @@ import { useParams } from "react-router-dom";
 import "../components/loader.css"
 import HackathonChatbot from "../components/Chatbot";
 
+
+type contractResponse = {
+    hackathonName : string;
+    hackathonDescription : string;   
+    additionalDetails : string;
+    hackathonPoster : string;
+    additionalLinks : string;
+    hackathonPrize : string;
+    hackathonOpen : string;
+    hackathonEnds : string;
+    hackathonOwner : string;
+    totalPrize : number;
+    hackathonTheme : string[];
+}
+
 const IndividualHackathon = () => {
 
 
@@ -15,12 +30,11 @@ const IndividualHackathon = () => {
 
     console.log(id);
 
-    const {data , isPending , isSuccess , isError} = useReadContract({
+    const {data , isPending , isSuccess , isError} : {data : contractResponse | undefined , isPending : boolean , isSuccess : boolean , isError : boolean} = useReadContract({
         abi : ABI,
         address : ContractAddress,
         functionName : "getHackathon",
-        //@ts-ignore
-        args : [parseInt(id)]
+        args : [parseInt(id!)]
     })
 
     console.log(data);
@@ -43,8 +57,7 @@ const IndividualHackathon = () => {
                 <HackathonUpper data = {data}/>
                 <HackathonLower data = {data}/>
                 <HackathonChatbot hackathonDescription =
-                //@ts-ignore 
-                {data.hackathonDescription}/>
+                {data?.hackathonDescription}/>
                 <Footer/>
             </div>
     }
