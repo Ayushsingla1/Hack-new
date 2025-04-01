@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useReadContract } from 'wagmi';
 import { ABI, ContractAddress } from '../utils/ContractInfo';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "../components/loader.css";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -24,7 +24,7 @@ type selectedSubmission = {
 const HackathonSubmissionsPage = () => {
 
 
-    const {hackathonId : id}= useParams();
+    // const {hackathonId : id}= useParams();
 
     //@ts-ignore
     const {data : submissions , isSuccess , isPending , isError}= useReadContract({
