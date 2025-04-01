@@ -30,8 +30,8 @@ const HackathonSubmissionsPage = () => {
     const {data : submissions , isSuccess , isPending , isError}= useReadContract({
         abi : ABI,
         address : ContractAddress,
-        functionName : "getHackathonSubmissions",
-        args : [id]
+        functionName : "getAllSubmissions",
+        args : []
     })
 
     const containerVariants = {
@@ -58,7 +58,6 @@ const HackathonSubmissionsPage = () => {
 
   
   const [selectedProject, setSelectedProject] = useState<null | selectedSubmission>(null);
-  const [filterCategory, setFilterCategory] = useState("");
   const navigate = useNavigate();
   
   // Get unique categories
@@ -78,15 +77,6 @@ const HackathonSubmissionsPage = () => {
     </div>
   }
   if(!isPending && isSuccess){
-    //@ts-ignore
-    const categories = [...new Set(submissions.map((sub : Submission)=> sub.category))];
-  
-  // Filter submissions based on category
-  const filteredSubmissions = filterCategory 
-  //@ts-ignore
-    ? submissions.filter((sub : any) => sub.category === filterCategory)
-    : submissions;
-
     return (
        <div className='bg-gray-900 text-white'>
         <Navbar/>
@@ -110,37 +100,14 @@ const HackathonSubmissionsPage = () => {
               Browse innovative solutions created during our latest hackathon
             </motion.p>
             
-            {/* Filter by category */}
-            <div className="mb-8 flex justify-center">
-              <div className="inline-flex rounded-md shadow-sm">
-                <button 
-                  className={`px-4 py-2 rounded-l-md ${!filterCategory ? 'bg-blue-600' : 'bg-gray-700'}`}
-                  onClick={() => setFilterCategory("")}
-                >
-                  All Projects
-                </button>
-                {categories.map(category => (
-                  <button 
-                  //@ts-ignore
-                    key={category}
-                    className={`px-4 py-2 ${filterCategory === category ? 'bg-blue-600' : 'bg-gray-700'}`}
-                    //@ts-ignore
-                    onClick={() => setFilterCategory(category)}
-                  >
-                    {category as string}
-                  </button>
-                ))}
-              </div>
-            </div>
-            
-            {/* Project grid */}
             <motion.div 
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              {filteredSubmissions.map((submission : any, index : any) => (
+              {//@ts-ignore
+              submissions.map((submission : any, index : any) => (
                 <motion.div 
                   key={index}
                   className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"

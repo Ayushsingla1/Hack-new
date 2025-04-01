@@ -21,6 +21,7 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-6">
           <div className="hover:text-purple-400 transition-colors hover:cursor-pointer" onClick={() => navigate('/')}>Home</div>
           <div className="hover:text-purple-400 transition-colors hover:cursor-pointer" onClick={() => navigate('/hackathons/explore')}>Hackathons</div>
+          <div className='hover:text-purple-400 transition-colors hover:cursor-pointer' onClick={() => navigate('/hackathon/submissions')}>Projects</div>
           <div className="hover:text-purple-400 transition-colors hover:cursor-pointer" onClick={() => navigate('/create-hackathon')}>Create Hackathon</div>
         </div>
 

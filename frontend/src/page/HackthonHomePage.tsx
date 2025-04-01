@@ -74,6 +74,7 @@ const HackathonHomepage = () => {
                   className="border border-purple-600 px-8 py-3 rounded-md font-medium"
                   whileHover={{ scale: 1.05, backgroundColor: 'rgba(139, 92, 246, 0.1)' }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate('/hackathon/submissions')}
                 >
                   Explore Projects
                 </motion.button>
