@@ -49,7 +49,7 @@ const WinnerPage = () => {
 
     console.log(data)
 
-    const { writeContract , data : hash} = useWriteContract({});
+    const { writeContract , data : hash , isPending : transactionStarted} = useWriteContract({});
     const {isPending : writePending , isSuccess : writeSuccess } = useWaitForTransactionReceipt({hash});
 
     // Handle Form Submission
@@ -87,7 +87,7 @@ const WinnerPage = () => {
         </div>
     }
 
-    if(writePending) {
+    if(writePending && transactionStarted) {
         return <div className="flex justify-center items-center w-screen h-screen bg-gray-900">
             <div className="flex flex-col gap-y-5 text-2xl text-white">
                 <span className="loader"></span>
@@ -105,7 +105,7 @@ const WinnerPage = () => {
         </div>
     }
 
-    if(!isPending && isSuccess && !writePending){
+    if(!isPending && isSuccess && !transactionStarted){
         console.log(data)
         return (
             <div className="bg-gray-900 text-white min-h-screen flex justify-between flex-col">
