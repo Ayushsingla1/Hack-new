@@ -23,9 +23,6 @@ type selectedSubmission = {
 }
 const HackathonSubmissionsPage = () => {
 
-
-    // const {hackathonId : id}= useParams();
-
     //@ts-ignore
     const {data : submissions , isSuccess , isPending , isError}= useReadContract({
         abi : ABI,
